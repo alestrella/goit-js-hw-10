@@ -17,9 +17,12 @@ window.addEventListener('load', () =>
 function handleInputSearch(evt) {
     const searchValue = evt.target.value.toLowerCase().trim();
 
-    fetchCountries(searchValue)
+    if (searchValue) {
+        fetchCountries(searchValue)
         .then(dislaySearchResult)
         .catch(error => Notify.failure('Oops, there is no country with that name'));
+    }
+    clearContent();
 }
 
 function dislaySearchResult(countriesArr) {
